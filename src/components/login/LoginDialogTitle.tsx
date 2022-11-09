@@ -8,9 +8,9 @@ interface PropTypes {
 }
 
 const StyledDialogTitle = styled(DialogTitle)(({ theme }) => ({
+  fontSize: '1.5rem',
   display: 'flex',
   justifyContent: 'center',
-  textDecoration: 'underline',
   color: theme.textfield.whiteFont,
   backgroundColor: theme.background.light,
   border: 'none',
