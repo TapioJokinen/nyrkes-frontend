@@ -3,7 +3,7 @@ import React, { useMemo, useState, useCallback } from 'react';
 import { blacklistToken, getTokens } from '../api/auth';
 import useAlert from '../hooks/useAlert';
 import {
-  LOGIN_FAILED, LOGIN_SUCCESS, LOGOUT_FAILED, LOGOUT_SUCCESS,
+  LOGIN_FAILED, LOGIN_SUCCESS,
 } from '../utils/alertMessages';
 
 interface AuthContextType {
@@ -29,16 +29,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     alert.setAlert('success', LOGIN_SUCCESS);
   }, []);
 
-  const logoutSuccessfull = useCallback(() => {
-    setLogged(false);
-    alert.setAlert('success', LOGOUT_SUCCESS);
-  }, []);
-
-  const logoutFailed = useCallback(() => {
-    setLogged(false);
-    alert.setAlert('error', LOGOUT_FAILED);
-  }, []);
-
   const signin = useCallback(
     (
       email: string,
@@ -59,14 +49,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   );
 
   const logout = useCallback(() => {
-    blacklistToken()
-      .then((res) => {
-        if (res.ok) {
-          logoutSuccessfull();
-        } else {
-          logoutFailed();
-        }
-      }).catch(() => logoutFailed());
+    blacklistToken();
   }, []);
 
   const value = useMemo(() => ({
