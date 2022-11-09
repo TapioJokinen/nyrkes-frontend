@@ -16,7 +16,11 @@ const RequireAuth = ({ children }: { children: JSX.Element }) => {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return children;
+  if (response.ok) {
+    return children;
+  }
+
+  return <p>Boo!</p>;
 };
 
 export default RequireAuth;
