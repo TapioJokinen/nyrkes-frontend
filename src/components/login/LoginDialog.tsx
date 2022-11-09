@@ -9,6 +9,23 @@ import LoginDialogContent from './LoginDialogContent';
 import LoginDialogTitle from './LoginDialogTitle';
 import LoginForm from './LoginForm';
 
+const welcomeTexts = [
+  'Hello, sunshine!',
+  'What’s kickin',
+  'little chicken?',
+  'Peek-a-boo!',
+  'Howdy-doody!',
+  'Ahoy, matey!',
+  'I like your face.',
+  "What's cookin",
+  "good lookin'?",
+  '‘Ello, mate.',
+  "I'm Batman.",
+  'Top of the mornin’ to ya!',
+  '(ɔ◔‿◔)ɔ ♥',
+  '(👍≖‿‿≖)👍 👍(≖‿‿≖👍)',
+];
+
 const Transition = React.forwardRef((
   props: TransitionProps & {
       children: React.ReactElement<any, any>;
@@ -25,7 +42,7 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
 
 const LoginDialog = () => (
   <StyledDialog open TransitionComponent={Transition} hideBackdrop>
-    <LoginDialogTitle title="Sign in" />
+    <LoginDialogTitle title={welcomeTexts[Math.floor(Math.random() * welcomeTexts.length)]} />
     <LoginDialogContent>
       <LoginForm />
     </LoginDialogContent>
