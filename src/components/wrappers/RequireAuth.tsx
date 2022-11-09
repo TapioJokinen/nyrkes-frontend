@@ -2,8 +2,7 @@ import React from 'react';
 
 import { useLocation, Navigate } from 'react-router-dom';
 
-import { verifyToken } from '../../api/auth'; // eslint-disable-line
-
+import { verifyToken } from '../../api/auth';
 import useAuth from '../../hooks/useAuth';
 import useFetch from '../../hooks/useFetch';
 
