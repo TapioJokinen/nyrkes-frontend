@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
+import { useLocation, useNavigate } from 'react-router-dom';
 
+import useAuth from '../../hooks/useAuth';
 import LoginButton from './LoginButton';
 import LoginForgotPwButton from './LoginForgotPwButton';
 import LoginRegisterButton from './LoginRegisterButton';
@@ -24,28 +26,43 @@ const LoginForm = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/home';
+
+  const handleClick = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    auth.signin(email, password, () => {
+      navigate(from, { replace: true });
+    });
+  };
+
   return (
-    <StyledBox component="form">
-      <Stack spacing={2}>
-        <LoginTextField
-          label="Email"
-          variant="outlined"
-          type="email"
-          setState={setEmail}
-        />
-        <LoginTextField
-          label="Password"
-          variant="outlined"
-          type="password"
-          setState={setPassword}
-        />
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <LoginForgotPwButton />
-          <LoginRegisterButton />
-        </div>
-        <LoginButton email={email} password={password} />
-      </Stack>
-    </StyledBox>
+    <form onSubmit={handleClick}>
+      <StyledBox>
+        <Stack spacing={2}>
+          <LoginTextField
+            label="Email"
+            variant="outlined"
+            type="email"
+            setState={setEmail}
+          />
+          <LoginTextField
+            label="Password"
+            variant="outlined"
+            type="password"
+            setState={setPassword}
+          />
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <LoginForgotPwButton />
+            <LoginRegisterButton />
+          </div>
+          <LoginButton />
+        </Stack>
+      </StyledBox>
+    </form>
   );
 };
 

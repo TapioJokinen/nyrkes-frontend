@@ -2,14 +2,6 @@ import React from 'react';
 
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import { useLocation, useNavigate } from 'react-router-dom';
-
-import useAuth from '../../hooks/useAuth';
-
-interface PropTypes {
-  email: string;
-  password: string;
-}
 
 const StyledLoginButton = styled(Button)(({ theme }) => ({
   fontWeight: 'bold',
@@ -23,24 +15,10 @@ const StyledLoginButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-const LoginButton = ({ email, password }: PropTypes) => {
-  const auth = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const from = location.state?.from?.pathname || '/home';
-
-  const handleClick = async () => {
-    auth.signin(email, password, () => {
-      navigate(from, { replace: true });
-    });
-  };
-
-  return (
-    <StyledLoginButton variant="contained" onClick={handleClick}>
-      Sign in
-    </StyledLoginButton>
-  );
-};
+const LoginButton = () => (
+  <StyledLoginButton type="submit" variant="contained">
+    Sign in
+  </StyledLoginButton>
+);
 
 export default LoginButton;
