@@ -4,6 +4,7 @@ declare global {
         NODE_ENV: 'development' | 'production';
         REACT_APP_API_VERSION_V1: string;
         REACT_APP_BASE_URL: string;
+        REACT_APP_REQUEST_CREDENTIALS: 'include' | 'same-origin'
       }
     }
   }
