@@ -5,6 +5,7 @@ const useFetch = (service: (...args: any[]) => Promise<Response>, args: any[]) =
   const [status, setStatus] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+  const [ok, setOk] = useState<boolean>(false);
 
   useEffect(() => {
     const apicall = async () => {
@@ -14,10 +15,12 @@ const useFetch = (service: (...args: any[]) => Promise<Response>, args: any[]) =
         const response = await service(...args);
         setData(await response.json());
         setError(!response.ok);
+        setOk(response.ok);
         setStatus(response.status);
       } catch (e) {
         setData(e);
         setError(true);
+        setOk(false);
       }
 
       setIsLoading(false);
@@ -30,6 +33,7 @@ const useFetch = (service: (...args: any[]) => Promise<Response>, args: any[]) =
     data,
     status,
     isLoading,
+    ok,
     error,
   };
 };
