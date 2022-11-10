@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import Alert from '../components/alert';
-import LoginDialog from '../components/login/LoginDialog';
+import LoginDialog from '../components/login';
 import useAuth from '../hooks/useAuth';
 
 const Login = () => {
