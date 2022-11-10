@@ -20,7 +20,7 @@ const RequireAuth = ({ children }: { children: JSX.Element }) => {
     return children;
   }
 
-  return <p>Boo!</p>;
+  return <div />;
 };
 
 export default RequireAuth;
