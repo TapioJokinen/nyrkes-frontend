@@ -15,7 +15,7 @@ interface PropTypes {
     anchorElNav: null | HTMLElement;
 }
 
-const NavBarMenu = (props: PropTypes) => {
+const NavBarMenuMobile = (props: PropTypes) => {
   const {
     handleOpenNavMenu, handleCloseNavMenu, anchorElNav,
   } = props;
@@ -59,4 +59,4 @@ const NavBarMenu = (props: PropTypes) => {
   );
 };
 
-export default NavBarMenu;
+export default NavBarMenuMobile;

@@ -7,7 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 
 import NavBarLogo from './NavBarLogo';
 import NavBarLogoMobile from './NavBarLogoMobile';
-import NavBarMenu from './NavBarMenu';
+import NavBarMenuMobile from './NavBarMenuMobile';
 import NavBarPages from './NavBarPages';
 import NavBarTitle from './NavBarTitle';
 import NavBarTitleMobile from './NavBarTitleMobile';
@@ -39,7 +39,7 @@ const NavBar = () => {
         <Toolbar disableGutters>
           <NavBarLogo />
           <NavBarTitle />
-          <NavBarMenu
+          <NavBarMenuMobile
             handleOpenNavMenu={handleOpenNavMenu}
             handleCloseNavMenu={handleCloseNavMenu}
             anchorElNav={anchorElNav}
