@@ -57,7 +57,8 @@ const theme = createTheme({
     whiteFont: '#EDEDED',
   },
   typography: {
-    fontFamily: '"Ubuntu Mono", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"IBM Plex Sans Condensed",'
+    + '"Ubuntu Mono", "Roboto", "Helvetica", "Arial", "sans-serif"',
     fontSize: 14,
     fontWeightLight: 300,
     fontWeightRegular: 400,
