@@ -18,7 +18,7 @@ const Alert = () => {
     <Snackbar
       open={alert.open}
       onClose={alert.clearAlert}
-      autoHideDuration={5000}
+      autoHideDuration={4000}
       anchorOrigin={matches
         ? { vertical: 'top', horizontal: 'center' }
         : { vertical: 'bottom', horizontal: 'left' }}
