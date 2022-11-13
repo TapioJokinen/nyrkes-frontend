@@ -10,7 +10,7 @@ interface AuthContextType {
   logged: boolean;
   setLogged: React.Dispatch<React.SetStateAction<boolean>>;
   signin: (email: string, password: string, callback: VoidFunction) => void;
-  logout: () => void;
+  logout: (callback: VoidFunction) => void;
 }
 
 const AuthContext = React.createContext<AuthContextType>(null!);
@@ -40,16 +40,17 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           if (res.ok) {
             signingSuccessfull();
             callback();
+          } else {
+            signingFailed();
           }
-          signingFailed();
         })
         .catch(() => signingFailed());
     },
     [],
   );
 
-  const logout = useCallback(() => {
-    blacklistToken();
+  const logout = useCallback((callback: VoidFunction) => {
+    blacklistToken().finally(() => callback());
   }, []);
 
   const value = useMemo(() => ({
