@@ -11,6 +11,7 @@ declare module '@mui/material/styles' {
       background: {
         main: React.CSSProperties['color'];
         light: React.CSSProperties['color'];
+        hover: React.CSSProperties['color'];
       };
       button: {
         main: React.CSSProperties['color'];
@@ -27,6 +28,7 @@ declare module '@mui/material/styles' {
       background: {
         main: React.CSSProperties['color'];
         light: React.CSSProperties['color'];
+        hover: React.CSSProperties['color'];
       };
       button: {
         main: React.CSSProperties['color'];
@@ -48,7 +50,8 @@ const theme = createTheme({
   },
   background: {
     main: 'rgba(0, 0, 0, 0.93)',
-    light: 'rgba(32, 32, 32, 1)',
+    light: 'rgba(59, 59, 59, 1)',
+    hover: 'rgba(0, 0, 0, 0.50)',
   },
   button: {
     main: 'grey',
