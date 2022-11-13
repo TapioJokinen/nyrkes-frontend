@@ -2,24 +2,38 @@ import React from 'react';
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import { useTheme } from '@mui/material/styles';
+import { Link, useLocation } from 'react-router-dom';
 
 import { NAV_BAR_PAGES } from '../../utils/constants';
 
-interface PropTypes {
-    handleCloseNavMenu: () => void;
-}
+// Styled components won't work with Button 'component' property.
 
-const NavBarPages = (props: PropTypes) => {
-  const { handleCloseNavMenu } = props;
+const NavBarPages = () => {
+  const theme = useTheme();
+  const location = useLocation();
+
   return (
     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
       {NAV_BAR_PAGES.map((page) => (
         <Button
-          key={page}
-          onClick={handleCloseNavMenu}
-          sx={{ my: 2, color: 'white', display: 'block' }}
+          key={page.name}
+          component={Link}
+          to={page.path}
+          sx={{
+            my: 2,
+            width: '100px',
+            display: 'block',
+            textAlign: 'center',
+            borderBottom: location.pathname === page.path ? '2px solid yellow' : '',
+            color: theme.textfield.whiteFont,
+            '&.MuiButtonBase-root:hover': {
+              borderBottom: '2px solid yellow',
+              backgroundColor: theme.background.light,
+            },
+          }}
         >
-          {page}
+          {page.name}
         </Button>
       ))}
     </Box>
