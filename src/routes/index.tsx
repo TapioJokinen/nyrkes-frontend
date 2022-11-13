@@ -17,7 +17,7 @@ const RouterProvider = () => (
       <Route path="*" element={<NotFound />} />
       <Route path="login" element={<Login />} />
       <Route path="/" element={<RequireAuth><Root /></RequireAuth>}>
-        <Route path="home" element={<RequireAuth><p>Home sweet home</p></RequireAuth>} />
+        <Route path="dashboard" element={<RequireAuth><p>Dashboard statistics!</p></RequireAuth>} />
       </Route>
     </Routes>
   </BrowserRouter>
