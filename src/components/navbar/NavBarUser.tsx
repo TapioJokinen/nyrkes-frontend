@@ -12,7 +12,7 @@ const NavBarUser = (props: PropTypes) => {
   const { handleOpenUserMenu } = props;
   return (
     <Tooltip title="Open settings">
-      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, mr: 2 }}>
         <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
       </IconButton>
     </Tooltip>
