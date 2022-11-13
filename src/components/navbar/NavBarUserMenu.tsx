@@ -2,8 +2,11 @@ import React from 'react';
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
 
+import useAuth from '../../hooks/useAuth';
 import { NAV_BAR_SETTINGS } from '../../utils/constants';
 
 interface PropTypes {
@@ -11,10 +14,29 @@ interface PropTypes {
     anchorElUser: null | HTMLElement;
 }
 
+const StyledMenu = styled(Menu)(({ theme }) => ({
+  '& .MuiPaper-root': {
+    backgroundColor: theme.background.light,
+    border: `1px solid ${theme.textfield.whiteFont}`,
+  },
+  '& .MuiMenuItem-root:hover': {
+    backgroundColor: theme.background.hover,
+  },
+}));
+
 const NavBarUserMenu = (props: PropTypes) => {
   const { anchorElUser, handleCloseUserMenu } = props;
+  const auth = useAuth();
+  const theme = useTheme();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    auth.logout(() => {
+      navigate('/login', { replace: true });
+    });
+  };
   return (
-    <Menu
+    <StyledMenu
       sx={{ mt: '45px' }}
       id="menu-appbar"
       anchorEl={anchorElUser}
@@ -32,10 +54,13 @@ const NavBarUserMenu = (props: PropTypes) => {
     >
       {NAV_BAR_SETTINGS.map((setting) => (
         <MenuItem key={setting} onClick={handleCloseUserMenu}>
-          <Typography textAlign="center">{setting}</Typography>
+          <Typography textAlign="center" color={theme.textfield.whiteFont}>{setting}</Typography>
         </MenuItem>
       ))}
-    </Menu>
+      <MenuItem key="logout" onClick={handleLogout} sx={{ backgroundColor: '#B73E3E' }}>
+        <Typography textAlign="center" color="white">Logout</Typography>
+      </MenuItem>
+    </StyledMenu>
   );
 };
 
