@@ -54,7 +54,7 @@ const theme = createTheme({
     hover: 'rgba(0, 0, 0, 0.50)',
   },
   button: {
-    main: 'grey',
+    main: '#4f4f4f',
   },
   textfield: {
     whiteFont: '#EDEDED',

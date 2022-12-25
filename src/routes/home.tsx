@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Alert from '../components/alert';
-import LinkCard from '../components/links/LinkCard';
+import LinkContainer from '../components/linkcards';
 
 const Home = () => (
   <>
     <Alert />
-    <LinkCard />
+    <LinkContainer />
   </>
 );
 
