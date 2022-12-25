@@ -11,6 +11,7 @@ import NotFound from './404';
 import Home from './home';
 import Login from './login';
 import Root from './root';
+import UserOrgs from './userOrgs';
 
 const RouterProvider = () => (
   <BrowserRouter>
@@ -19,7 +20,9 @@ const RouterProvider = () => (
       <Route path="login" element={<Login />} />
       <Route path="/" element={<RequireAuth><Root /></RequireAuth>}>
         <Route path="home" element={<RequireAuth><Home /></RequireAuth>} />
-        <Route path="dashboard" element={<RequireAuth><p>Dashboard statistics!</p></RequireAuth>} />
+        <Route path="calendar" element={<RequireAuth><p>Calendar comes here!</p></RequireAuth>} />
+        <Route path="chat" element={<RequireAuth><p>Chat comes here!</p></RequireAuth>} />
+        <Route path="myorgs" element={<RequireAuth><UserOrgs /></RequireAuth>} />
       </Route>
     </Routes>
   </BrowserRouter>
