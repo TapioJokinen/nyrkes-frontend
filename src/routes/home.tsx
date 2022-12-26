@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Alert from '../components/alert';
-import LinkContainer from '../components/linkcards';
+import LinkContainer from '../components/linkCards';
 
 const Home = () => (
   <>

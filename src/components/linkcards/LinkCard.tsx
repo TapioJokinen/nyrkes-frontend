@@ -5,7 +5,8 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
-import { styled } from '@mui/material/styles';
+import Divider from '@mui/material/Divider';
+import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
@@ -43,14 +44,16 @@ const LinkCard = (props: PropTypes) => {
   const {
     Icon, to, title, description,
   } = props;
+  const theme = useTheme();
   return (
     <StyledCard elevation={10}>
-      <CardActionArea component={Link} to={to}>
+      <CardActionArea component={Link} to={to} sx={{ height: '100%' }}>
         <CardContent>
           <StyledBox>
             <Icon sx={{ fontSize: '3.5rem', mr: 1 }} />
             <Typography variant="h6">{title}</Typography>
           </StyledBox>
+          <Divider sx={{ borderColor: theme.textfield.whiteFont }} />
           <Typography sx={{ fontSize: '.8rem', opacity: 0.6 }}>
             {description}
           </Typography>
