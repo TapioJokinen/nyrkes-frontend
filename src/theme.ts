@@ -5,36 +5,38 @@ import { createTheme } from '@mui/material/styles';
 declare module '@mui/material/styles' {
     interface Theme {
       base: {
-        grey: React.CSSProperties['color'];
-        yellow: React.CSSProperties['color'];
+        lightBlue: React.CSSProperties['color'];
+        darkBlue: React.CSSProperties['color'];
+        darkGrey: React.CSSProperties['color'];
       };
       background: {
         main: React.CSSProperties['color'];
         light: React.CSSProperties['color'];
-        hover: React.CSSProperties['color'];
       };
       button: {
         main: React.CSSProperties['color'];
       }
-      textfield: {
-        whiteFont: React.CSSProperties['color'];
+      text: {
+        primary: React.CSSProperties['color'];
+        secondary: React.CSSProperties['color'];
       };
     }
     interface ThemeOptions {
       base: {
-        grey: React.CSSProperties['color'];
-        yellow: React.CSSProperties['color'];
+        lightBlue: React.CSSProperties['color'];
+        darkBlue: React.CSSProperties['color'];
+        darkGrey: React.CSSProperties['color'];
       };
       background: {
         main: React.CSSProperties['color'];
         light: React.CSSProperties['color'];
-        hover: React.CSSProperties['color'];
       };
       button: {
         main: React.CSSProperties['color'];
       }
-      textfield: {
-        whiteFont: React.CSSProperties['color'];
+      text: {
+        primary: React.CSSProperties['color'];
+        secondary: React.CSSProperties['color'];
       };
     }
     interface BreakpointOverrides {
@@ -45,19 +47,20 @@ declare module '@mui/material/styles' {
 
 const theme = createTheme({
   base: {
-    grey: 'grey',
-    yellow: 'yellow',
+    lightBlue: '#BBE1FA',
+    darkBlue: '#0F4C75',
+    darkGrey: '#212121',
   },
   background: {
-    main: 'rgba(0, 0, 0, 0.93)',
-    light: 'rgba(59, 59, 59, 1)',
-    hover: 'rgba(0, 0, 0, 0.50)',
+    main: '#1B262C',
+    light: '#2C3333',
   },
   button: {
-    main: '#4f4f4f',
+    main: '#2C3333',
   },
-  textfield: {
-    whiteFont: '#EDEDED',
+  text: {
+    primary: '#EDEDED',
+    secondary: '#ffffffb3',
   },
   typography: {
     fontFamily: '"IBM Plex Sans Condensed",'
