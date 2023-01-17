@@ -20,10 +20,10 @@ interface PropTypes {
 const StyledMenu = styled(Menu)(({ theme }) => ({
   '& .MuiPaper-root': {
     backgroundColor: theme.background.light,
-    border: `1px solid ${theme.textfield.whiteFont}`,
+    border: `1px solid ${theme.text.primary}`,
   },
   '& .MuiMenuItem-root:hover': {
-    backgroundColor: theme.background.hover,
+    backgroundColor: theme.base.darkBlue,
   },
 }));
 
@@ -71,7 +71,7 @@ const NavBarMenuMobile = (props: PropTypes) => {
           >
             <Typography
               textAlign="center"
-              color={theme.textfield.whiteFont}
+              color={theme.text.primary}
             >
               {page.name}
             </Typography>

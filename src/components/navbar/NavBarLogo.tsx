@@ -10,7 +10,7 @@ const NavBarLogo = () => {
   const theme = useTheme();
   return (
     <IconButton onClick={() => navigate('/home')}>
-      <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: theme.base.yellow }} />
+      <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: theme.base.darkBlue }} />
     </IconButton>
   );
 };

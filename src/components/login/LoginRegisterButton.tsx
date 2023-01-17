@@ -6,7 +6,7 @@ import { styled } from '@mui/material/styles';
 const StyledRegisterButton = styled(Button)(({ theme }) => ({
   color: 'grey',
   '&.MuiButtonBase-root:hover': {
-    color: theme.base.yellow,
+    color: theme.base.darkBlue,
     backgroundColor: theme.background.light,
   },
 }));

@@ -25,10 +25,10 @@ const NavBarPages = () => {
             width: '100px',
             display: 'block',
             textAlign: 'center',
-            borderBottom: location.pathname === page.path ? '2px solid yellow' : '',
-            color: theme.textfield.whiteFont,
+            borderBottom: location.pathname === page.path ? `2px solid ${theme.base.darkBlue}` : '',
+            color: theme.text.primary,
             '&.MuiButtonBase-root:hover': {
-              borderBottom: '2px solid yellow',
+              borderBottom: `2px solid ${theme.base.darkBlue}`,
               backgroundColor: theme.background.light,
             },
           }}

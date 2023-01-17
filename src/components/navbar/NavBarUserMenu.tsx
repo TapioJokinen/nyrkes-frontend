@@ -17,10 +17,10 @@ interface PropTypes {
 const StyledMenu = styled(Menu)(({ theme }) => ({
   '& .MuiPaper-root': {
     backgroundColor: theme.background.light,
-    border: `1px solid ${theme.textfield.whiteFont}`,
+    border: `1px solid ${theme.text.primary}`,
   },
   '& .MuiMenuItem-root:hover': {
-    backgroundColor: theme.background.hover,
+    backgroundColor: theme.base.darkBlue,
   },
 }));
 
@@ -54,7 +54,7 @@ const NavBarUserMenu = (props: PropTypes) => {
     >
       {NAV_BAR_SETTINGS.map((setting) => (
         <MenuItem key={setting} onClick={handleCloseUserMenu}>
-          <Typography textAlign="center" color={theme.textfield.whiteFont}>{setting}</Typography>
+          <Typography textAlign="center" color={theme.text.primary}>{setting}</Typography>
         </MenuItem>
       ))}
       <MenuItem key="logout" onClick={handleLogout} sx={{ backgroundColor: '#B73E3E' }}>

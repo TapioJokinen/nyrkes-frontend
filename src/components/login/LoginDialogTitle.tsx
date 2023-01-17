@@ -11,7 +11,7 @@ const StyledDialogTitle = styled(DialogTitle)(({ theme }) => ({
   fontSize: '1.5rem',
   display: 'flex',
   justifyContent: 'center',
-  color: theme.textfield.whiteFont,
+  color: theme.text.primary,
   backgroundColor: theme.background.light,
   border: 'none',
 }));
