@@ -1,12 +1,13 @@
 import React from 'react';
 
 import Alert from '../components/alert';
+import UserOrgsContainer from '../components/userOrgs';
 import { UserOrgsProvider } from '../context';
 
 const UserOrgs = () => (
   <UserOrgsProvider>
     <Alert />
-    <p>Moi</p>
+    <UserOrgsContainer />
   </UserOrgsProvider>
 );
 

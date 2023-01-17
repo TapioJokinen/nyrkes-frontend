@@ -10,18 +10,20 @@ interface Org {
     dateUpdated: string,
     name: string,
     altName: string,
-    ownerId: number
+    ownerId: number,
+    logo: string,
+    membersCount: number,
 }
 
 interface UserOrgsContextType {
-    orgs: Array<Org>
+    orgs: Array<Org> | null
 }
 
 const UserOrgsContext = React.createContext<UserOrgsContextType>(null!);
 
 const UserOrgsProvider = ({ children }: {children: React.ReactNode}) => {
   const alert = useAlert();
-  const [orgs, setOrgs] = useState<Array<Org>>([]);
+  const [orgs, setOrgs] = useState<Array<Org> | null>(null);
 
   useEffect(() => {
     getUserOrgs()
