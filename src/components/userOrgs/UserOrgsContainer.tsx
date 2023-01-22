@@ -19,6 +19,11 @@ const StyledBox = styled(Box)(({ theme }) => ({
   marginLeft: 'auto',
   padding: 1,
   boxShadow: `25px -10px ${theme.base.darkBlue}`,
+  borderRadius: '8px',
+  borderBottom: `3px solid ${theme.base.darkBlue}`,
+  borderLeft: `3px solid ${theme.base.darkBlue}`,
+  maxHeight: 'calc(100vh - 130px)',
+  overflow: 'auto',
   [theme.breakpoints.down('md')]: {
     width: 'inherit',
     minWidth: 0,
@@ -53,7 +58,12 @@ const UserOrgsContainer = () => {
       <List subheader={(
         <ListSubheader
           component="div"
-          sx={{ backgroundColor: 'inherit', color: theme.text.primary, fontSize: '1.5em' }}
+          sx={{
+            backgroundColor: 'inherit',
+            color: theme.text.primary,
+            fontSize: '1.5em',
+            position: 'static',
+          }}
         >
           Your Organizations
           <Divider sx={{ borderColor: theme.text.primary }} />

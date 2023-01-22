@@ -37,6 +37,7 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
   border: 'none',
   '& .MuiPaper-root': {
     backgroundColor: theme.background.main,
+    border: `1px solid ${theme.base.darkBlue}`,
   },
 }));
 
