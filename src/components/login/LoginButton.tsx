@@ -9,9 +9,10 @@ const StyledLoginButton = styled(Button)(({ theme }) => ({
   height: '60px',
   backgroundColor: theme.button.main,
   color: theme.text.primary,
+  transition: 'none',
   '&.MuiButtonBase-root:hover': {
     backgroundColor: theme.background.light,
-    border: `2px solid ${theme.base.darkBlue}`,
+    border: `3px solid ${theme.base.darkBlue}`,
   },
 }));
 

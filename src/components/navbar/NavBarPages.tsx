@@ -27,6 +27,7 @@ const NavBarPages = () => {
             textAlign: 'center',
             borderBottom: location.pathname === page.path ? `2px solid ${theme.base.darkBlue}` : '',
             color: theme.text.primary,
+            transition: 'none',
             '&.MuiButtonBase-root:hover': {
               borderBottom: `2px solid ${theme.base.darkBlue}`,
               backgroundColor: theme.background.light,
