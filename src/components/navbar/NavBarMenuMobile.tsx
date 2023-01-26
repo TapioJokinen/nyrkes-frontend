@@ -19,11 +19,17 @@ interface PropTypes {
 
 const StyledMenu = styled(Menu)(({ theme }) => ({
   '& .MuiPaper-root': {
-    backgroundColor: theme.background.light,
-    border: `1px solid ${theme.text.primary}`,
+    backgroundColor: theme.background.navbar,
+    border: `1px solid ${theme.text.primaryWhite}`,
   },
   '& .MuiMenuItem-root:hover': {
-    backgroundColor: theme.base.darkBlue,
+    backgroundColor: theme.background.navbar,
+  },
+}));
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  '&:hover': {
+    textDecoration: `underline ${theme.link.hover}`,
   },
 }));
 
@@ -69,12 +75,12 @@ const NavBarMenuMobile = (props: PropTypes) => {
             to={page.path}
             onClick={handleCloseNavMenu}
           >
-            <Typography
+            <StyledTypography
               textAlign="center"
-              color={theme.text.primary}
+              color={theme.text.primaryWhite}
             >
               {page.name}
-            </Typography>
+            </StyledTypography>
           </MenuItem>
         ))}
       </StyledMenu>

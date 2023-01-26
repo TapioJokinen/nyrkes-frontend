@@ -5,38 +5,58 @@ import { createTheme } from '@mui/material/styles';
 declare module '@mui/material/styles' {
     interface Theme {
       base: {
-        lightBlue: React.CSSProperties['color'];
-        darkBlue: React.CSSProperties['color'];
+        secondaryBlue: React.CSSProperties['color'];
+        mainBlue: React.CSSProperties['color'];
         darkGrey: React.CSSProperties['color'];
       };
+      icon: {
+        main: React.CSSProperties['color'];
+      }
       background: {
         main: React.CSSProperties['color'];
-        light: React.CSSProperties['color'];
+        navbar: React.CSSProperties['color'];
       };
       button: {
         main: React.CSSProperties['color'];
+        hover: React.CSSProperties['color'];
+      }
+      link: {
+        active: React.CSSProperties['color'];
+        hover: React.CSSProperties['color'];
       }
       text: {
-        primary: React.CSSProperties['color'];
-        secondary: React.CSSProperties['color'];
+        primaryWhite: React.CSSProperties['color'];
+        secondaryWhite: React.CSSProperties['color'];
+        primaryBlack: React.CSSProperties['color'];
+        secondaryBlack: React.CSSProperties['color'];
       };
     }
     interface ThemeOptions {
       base: {
-        lightBlue: React.CSSProperties['color'];
-        darkBlue: React.CSSProperties['color'];
+        mainBlue: React.CSSProperties['color'];
+        secondaryBlue: React.CSSProperties['color'];
         darkGrey: React.CSSProperties['color'];
       };
+      icon: {
+        main: React.CSSProperties['color'];
+      }
       background: {
         main: React.CSSProperties['color'];
-        light: React.CSSProperties['color'];
+        navbar: React.CSSProperties['color'];
       };
       button: {
         main: React.CSSProperties['color'];
+        hover: React.CSSProperties['color'];
+      }
+      link: {
+        active: React.CSSProperties['color'];
+        hover: React.CSSProperties['color'];
       }
       text: {
-        primary: React.CSSProperties['color'];
-        secondary: React.CSSProperties['color'];
+        primaryWhite: React.CSSProperties['color'];
+        secondaryWhite: React.CSSProperties['color'];
+        primaryBlack: React.CSSProperties['color'];
+        secondaryBlack: React.CSSProperties['color'];
       };
     }
     interface BreakpointOverrides {
@@ -47,20 +67,30 @@ declare module '@mui/material/styles' {
 
 const theme = createTheme({
   base: {
-    lightBlue: '#BBE1FA',
-    darkBlue: '#0F4C75',
+    mainBlue: '#08D9D6',
+    secondaryBlue: '#BBE1FA',
     darkGrey: '#212121',
   },
+  icon: {
+    main: '#08D9D6',
+  },
   background: {
-    main: '#1B262C',
-    light: '#2C3333',
+    main: '#EEEEEE',
+    navbar: '#252A34',
   },
   button: {
     main: '#2C3333',
+    hover: '#476072',
+  },
+  link: {
+    active: '#FF2E63',
+    hover: '#EAEAEA',
   },
   text: {
-    primary: '#EDEDED',
-    secondary: '#ffffffb3',
+    primaryWhite: '#EDEDED',
+    secondaryWhite: '#ffffffb3',
+    primaryBlack: '#000000',
+    secondaryBlack: '#000000b3',
   },
   typography: {
     fontFamily: '"IBM Plex Sans Condensed",'
@@ -79,6 +109,46 @@ const theme = createTheme({
       md: 900,
       lg: 1200,
       xl: 1536,
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          m: 0,
+          backgroundColor: '#EEEEEE',
+          fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,Ubuntu, '
+          + 'Cantarell, Fira Sans, Droid Sans, IBM Plex Sans Condensed, sans-serif',
+          scrollbarColor: '#6b6b6b #2b2b2b',
+          '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
+            backgroundColor: '#2b2b2b',
+          },
+          '&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
+            borderRadius: 8,
+            backgroundColor: '#6b6b6b',
+            minHeight: 24,
+            border: '3px solid #2b2b2b',
+          },
+          '&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus': {
+            backgroundColor: '#959595',
+          },
+          '&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active': {
+            backgroundColor: '#959595',
+          },
+          '&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover': {
+            backgroundColor: '#959595',
+          },
+          '&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner': {
+            backgroundColor: '#2b2b2b',
+          },
+        },
+        p: {
+          color: '#EDEDED',
+        },
+        code: {
+          fontFamily: "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace",
+        },
+      },
     },
   },
 });

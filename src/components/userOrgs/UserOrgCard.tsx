@@ -16,8 +16,8 @@ import { REACT_APP_BASE_URL } from '../../utils/urls';
 const StyledCard = styled(Card)(({ theme }) => ({
   backgroundColor: theme.base.darkGrey,
   '&.MuiCard-root:hover': {
-    backgroundColor: theme.base.darkBlue,
-    border: `2px solid ${theme.base.lightBlue}`,
+    backgroundColor: theme.button.hover,
+    border: `2px solid ${theme.base.secondaryBlue}`,
   },
 }));
 
@@ -41,7 +41,7 @@ const StyledTypographyMain = styled(Typography)(({ theme }) => ({
   maxWidth: '288px',
   marginLeft: 5,
   fontSize: '1.25em',
-  color: theme.text.primary,
+  color: theme.text.primaryWhite,
   textShadow: '1px 1px black',
   whiteSpace: 'nowrap',
   overflow: 'hidden',
@@ -55,7 +55,7 @@ const StyledTypographySub = styled(Typography)(({ theme }) => ({
   marginBlockStart: 0,
   marginLeft: 5,
   fontSize: '1em',
-  color: theme.text.secondary,
+  color: theme.text.secondaryWhite,
 }));
 
 const StyledGridItem = styled(Grid)(() => ({
@@ -108,7 +108,7 @@ const UserOrgCard = (props: PropTypes) => {
               </Grid>
               <StyledGridItem xs={6}>
                 <StyledBox>
-                  <GroupsIcon sx={{ color: theme.base.darkBlue }} />
+                  <GroupsIcon sx={{ color: theme.base.mainBlue }} />
                   <StyledTypographySub gutterBottom>
                     {org.membersCount}
                   </StyledTypographySub>

@@ -8,8 +8,8 @@ const StyledForgotPwButton = styled(Button)(({ theme }) => ({
   color: 'grey',
   textDecoration: 'underline',
   '&.MuiButtonBase-root:hover': {
-    color: theme.base.darkBlue,
-    backgroundColor: theme.background.light,
+    color: theme.base.mainBlue,
+    backgroundColor: theme.background.navbar,
   },
 }));
 

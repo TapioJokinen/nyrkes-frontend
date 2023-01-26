@@ -13,8 +13,8 @@ interface PropTypes {
 const StyledTextField = styled(TextField)(({ theme }) => ({
   // Autofill
   'input:-webkit-autofill': {
-    '-webkit-text-fill-color': theme.text.primary,
-    '-webkit-box-shadow': `0 0 0 100px ${theme.background.light} inset`,
+    '-webkit-text-fill-color': theme.text.primaryWhite,
+    '-webkit-box-shadow': `0 0 0 100px ${theme.background.navbar} inset`,
   },
   // Placeholder
   '& .MuiInputLabel-animated': {
@@ -25,7 +25,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
   // Text color
   '& .MuiInputBase-input': {
-    color: theme.text.primary,
+    color: theme.text.primaryWhite,
   },
   // Shrinked label
   '& .MuiInputLabel-shrink': {
@@ -34,7 +34,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   },
   // Shrinked label when focused
   '& label.Mui-focused': {
-    color: theme.base.darkBlue,
+    color: theme.base.mainBlue,
   },
   // Shrinked label color when text and not focused
   '& .MuiOutlinedInput-root': {
@@ -44,12 +44,12 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
     },
     // On hover
     '&:hover fieldset': {
-      borderColor: theme.base.darkBlue,
+      borderColor: theme.base.mainBlue,
       borderWidth: '2px',
     },
     // On focused
     '&.Mui-focused fieldset': {
-      borderColor: theme.base.darkBlue,
+      borderColor: theme.base.mainBlue,
       borderWidth: '2px',
     },
   },

@@ -8,7 +8,7 @@ interface PropTypes {
 }
 
 const StyledDialogContent = styled(DialogContent)(({ theme }) => ({
-  backgroundColor: theme.background.light,
+  backgroundColor: theme.background.navbar,
 }));
 
 const LoginDialogContent = ({ children }: PropTypes) => (

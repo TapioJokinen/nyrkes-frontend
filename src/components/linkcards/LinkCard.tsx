@@ -20,14 +20,14 @@ interface PropTypes {
 const StyledCard = styled(Card)(({ theme }) => ({
   width: 375,
   height: 130,
-  color: theme.text.primary,
+  color: theme.text.primaryWhite,
   '&.MuiCard-root': {
-    backgroundColor: theme.background.light,
-    border: `2px solid ${theme.base.darkBlue}`,
+    backgroundColor: theme.button.main,
+    border: `2px solid ${theme.base.mainBlue}`,
   },
   '&.MuiCard-root:hover': {
-    backgroundColor: theme.base.darkBlue,
-    border: `2px solid ${theme.base.lightBlue}`,
+    backgroundColor: theme.button.hover,
+    border: `2px solid ${theme.base.secondaryBlue}`,
   },
 }));
 
@@ -53,7 +53,7 @@ const LinkCard = (props: PropTypes) => {
             <Icon sx={{ fontSize: '3.5rem', mr: 1 }} />
             <Typography variant="h6">{title}</Typography>
           </StyledBox>
-          <Divider sx={{ borderColor: theme.text.primary }} />
+          <Divider sx={{ borderColor: theme.text.primaryWhite }} />
           <Typography sx={{ fontSize: '.8rem', opacity: 0.6 }}>
             {description}
           </Typography>

@@ -16,11 +16,31 @@ interface PropTypes {
 
 const StyledMenu = styled(Menu)(({ theme }) => ({
   '& .MuiPaper-root': {
-    backgroundColor: theme.background.light,
-    border: `1px solid ${theme.text.primary}`,
+    backgroundColor: theme.background.navbar,
+    border: `1px solid ${theme.text.primaryWhite}`,
+  },
+  '& .MuiList-root': {
+    paddingBottom: '4px',
+    paddingTop: '4px',
   },
   '& .MuiMenuItem-root:hover': {
-    backgroundColor: theme.base.darkBlue,
+    backgroundColor: theme.background.navbar,
+  },
+}));
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  '&:hover': {
+    textDecoration: `underline ${theme.link.hover}`,
+  },
+}));
+
+const StyledMenuItemLogout = styled(MenuItem)(({ theme }) => ({
+  backgroundColor: theme.link.active,
+  marginLeft: '3px',
+  marginRight: '3px',
+  '&.MuiMenuItem-root:hover': {
+    backgroundColor: theme.link.active,
+    textDecoration: `underline ${theme.link.hover}`,
   },
 }));
 
@@ -54,12 +74,14 @@ const NavBarUserMenu = (props: PropTypes) => {
     >
       {NAV_BAR_SETTINGS.map((setting) => (
         <MenuItem key={setting} onClick={handleCloseUserMenu}>
-          <Typography textAlign="center" color={theme.text.primary}>{setting}</Typography>
+          <StyledTypography textAlign="center" color={theme.text.primaryWhite}>
+            {setting}
+          </StyledTypography>
         </MenuItem>
       ))}
-      <MenuItem key="logout" onClick={handleLogout} sx={{ backgroundColor: '#B73E3E' }}>
-        <Typography textAlign="center" color="white">Logout</Typography>
-      </MenuItem>
+      <StyledMenuItemLogout key="logout" onClick={handleLogout}>
+        <StyledTypography textAlign="center" color="white">Logout</StyledTypography>
+      </StyledMenuItemLogout>
     </StyledMenu>
   );
 };

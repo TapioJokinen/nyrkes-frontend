@@ -14,15 +14,11 @@ import UserOrgCard from './UserOrgCard';
 const StyledBox = styled(Box)(({ theme }) => ({
   width: '500px',
   maxWidth: '500px',
+  maxHeight: 'calc(100vh - 130px)',
   marginRight: 50,
   marginTop: 30,
   marginLeft: 'auto',
   padding: 1,
-  boxShadow: `25px -10px ${theme.base.darkBlue}`,
-  borderRadius: '8px',
-  borderBottom: `3px solid ${theme.base.darkBlue}`,
-  borderLeft: `3px solid ${theme.base.darkBlue}`,
-  maxHeight: 'calc(100vh - 130px)',
   overflow: 'auto',
   [theme.breakpoints.down('md')]: {
     width: 'inherit',
@@ -31,7 +27,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
     margin: 'auto',
     marginTop: 20,
   },
-  backgroundColor: theme.background.light,
+  backgroundColor: '#EDEDED',
 }));
 
 const StyledSkeleton = styled(Skeleton)(() => ({
@@ -54,19 +50,19 @@ const UserOrgsContainer = () => {
   const userOrgs = useUserOrgs();
   const theme = useTheme();
   return (
-    <StyledBox>
+    <StyledBox sx={{ boxShadow: 5 }}>
       <List subheader={(
         <ListSubheader
           component="div"
           sx={{
             backgroundColor: 'inherit',
-            color: theme.text.primary,
+            color: theme.text.primaryBlack,
             fontSize: '1.5em',
             position: 'static',
           }}
         >
           Your Organizations
-          <Divider sx={{ borderColor: theme.text.primary }} />
+          <Divider sx={{ borderColor: theme.text.secondaryBlack }} />
         </ListSubheader>
       )}
       >

@@ -12,12 +12,12 @@ import NavBarMenuMobile from './NavBarMenuMobile';
 import NavBarPages from './NavBarPages';
 import NavBarTitle from './NavBarTitle';
 import NavBarTitleMobile from './NavBarTitleMobile';
-import NavBarUser from './NavBarUser';
+import NavBarUser from './NavBarUserIcon';
 import NavBarUserMenu from './NavBarUserMenu';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   '&.MuiPaper-root': {
-    backgroundColor: theme.background.light,
+    backgroundColor: theme.background.navbar,
   },
 }));
 
