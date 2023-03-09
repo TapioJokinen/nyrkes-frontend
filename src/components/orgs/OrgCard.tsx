@@ -6,6 +6,7 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -14,7 +15,7 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { REACT_APP_BASE_URL } from '../../utils/urls';
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: theme.base.darkGrey,
+  backgroundColor: theme.list.item,
   '&.MuiCard-root:hover': {
     backgroundColor: theme.button.hover,
     border: `2px solid ${theme.base.secondaryBlue}`,
@@ -26,6 +27,7 @@ const StyledCardMedia = styled(CardMedia)(() => ({
   width: '100%',
   height: 85,
   maxWidth: 85,
+  margin: '5px',
 }));
 
 const StyledCardContent = styled(CardContent)(() => ({
@@ -42,7 +44,6 @@ const StyledTypographyMain = styled(Typography)(({ theme }) => ({
   marginLeft: 5,
   fontSize: '1.25em',
   color: theme.text.primaryWhite,
-  textShadow: '1px 1px black',
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
@@ -78,6 +79,7 @@ interface Org {
     altName: string,
     ownerId: number,
     logo: string,
+    slug: string,
     membersCount: number,
 }
 
@@ -85,12 +87,12 @@ interface PropTypes {
     org: Org
 }
 
-const UserOrgCard = (props: PropTypes) => {
+const OrgCard = (props: PropTypes) => {
   const { org } = props;
   const theme = useTheme();
   return (
-    <StyledCard>
-      <CardActionArea>
+    <StyledCard elevation={5}>
+      <CardActionArea LinkComponent={Link} href={`/orgs/${org.slug}`}>
         <Stack direction="row">
           <StyledCardMedia
             image={`${REACT_APP_BASE_URL}/media/${org.logo}`}
@@ -122,4 +124,4 @@ const UserOrgCard = (props: PropTypes) => {
   );
 };
 
-export default UserOrgCard;
+export default OrgCard;

@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-import Alert from '../components/alert';
 import NavBar from '../components/navbar';
+import Alert from '../features/alert/Alert';
 
 const Root = () => {
   const location = useLocation();

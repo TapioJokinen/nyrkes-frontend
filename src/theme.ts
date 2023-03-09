@@ -20,6 +20,10 @@ declare module '@mui/material/styles' {
         main: React.CSSProperties['color'];
         hover: React.CSSProperties['color'];
       }
+      list: {
+        background: React.CSSProperties['color'];
+        item: React.CSSProperties['color'];
+      }
       link: {
         active: React.CSSProperties['color'];
         hover: React.CSSProperties['color'];
@@ -48,6 +52,10 @@ declare module '@mui/material/styles' {
         main: React.CSSProperties['color'];
         hover: React.CSSProperties['color'];
       }
+      list: {
+        background: React.CSSProperties['color'];
+        item: React.CSSProperties['color'];
+      }
       link: {
         active: React.CSSProperties['color'];
         hover: React.CSSProperties['color'];
@@ -75,16 +83,20 @@ const theme = createTheme({
     main: '#08D9D6',
   },
   background: {
-    main: '#EEEEEE',
+    main: '#1b1f26',
     navbar: '#252A34',
   },
   button: {
     main: '#2C3333',
     hover: '#476072',
   },
+  list: {
+    background: '#252A34',
+    item: '#2b313d',
+  },
   link: {
     active: '#FF2E63',
-    hover: '#EAEAEA',
+    hover: '#08D9D6',
   },
   text: {
     primaryWhite: '#EDEDED',
@@ -116,7 +128,7 @@ const theme = createTheme({
       styleOverrides: {
         body: {
           m: 0,
-          backgroundColor: '#EEEEEE',
+          backgroundColor: '#1b1f26',
           fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,Ubuntu, '
           + 'Cantarell, Fira Sans, Droid Sans, IBM Plex Sans Condensed, sans-serif',
           scrollbarColor: '#6b6b6b #2b2b2b',

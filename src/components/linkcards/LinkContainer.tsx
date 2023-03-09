@@ -12,7 +12,7 @@ const linkCards = [
   <LinkCard
     key="user-orgs"
     Icon={GroupsIcon}
-    to="/myorgs"
+    to="/orgs"
     title="Your Organizations."
     description="All the stuff related to Your Organizations can be found here."
   />,

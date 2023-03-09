@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Divider } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -8,13 +8,14 @@ import ListSubheader from '@mui/material/ListSubheader';
 import Skeleton from '@mui/material/Skeleton';
 import { styled, useTheme } from '@mui/material/styles';
 
-import useUserOrgs from '../../hooks/useUserOrgs';
-import UserOrgCard from './UserOrgCard';
+import useOrgs from '../../hooks/useOrgs';
+import OrgCard from './OrgCard';
 
 const StyledBox = styled(Box)(({ theme }) => ({
   width: '500px',
   maxWidth: '500px',
   maxHeight: 'calc(100vh - 130px)',
+  backgroundColor: theme.list.background,
   marginRight: 50,
   marginTop: 30,
   marginLeft: 'auto',
@@ -27,7 +28,6 @@ const StyledBox = styled(Box)(({ theme }) => ({
     margin: 'auto',
     marginTop: 20,
   },
-  backgroundColor: '#EDEDED',
 }));
 
 const StyledSkeleton = styled(Skeleton)(() => ({
@@ -46,8 +46,12 @@ const StyledListItem = styled(ListItem)(() => ({
   marginInlineEnd: 'auto',
 }));
 
-const UserOrgsContainer = () => {
-  const userOrgs = useUserOrgs();
+const StyledTypography = styled(Typography)(() => ({
+  margin: '16px',
+}));
+
+const OrgsContainer = () => {
+  const orgs = useOrgs();
   const theme = useTheme();
   return (
     <StyledBox sx={{ boxShadow: 5 }}>
@@ -56,26 +60,33 @@ const UserOrgsContainer = () => {
           component="div"
           sx={{
             backgroundColor: 'inherit',
-            color: theme.text.primaryBlack,
+            color: theme.text.primaryWhite,
             fontSize: '1.5em',
             position: 'static',
           }}
         >
           Your Organizations
-          <Divider sx={{ borderColor: theme.text.secondaryBlack }} />
+          <Divider sx={{ borderColor: theme.text.secondaryWhite }} />
         </ListSubheader>
       )}
       >
-        {userOrgs.orgs ? userOrgs.orgs.map((org) => (
+        {orgs.orgs ? orgs.orgs.map((org) => (
           <StyledListItem key={org.id}>
-            <UserOrgCard org={org} />
+            <OrgCard org={org} />
           </StyledListItem>
 
         )) : <StyledSkeleton />}
-
+        {orgs.orgs && orgs.orgs.length <= 0
+        && (
+        <StyledTypography>
+          You are not part of any organization :(
+          {' '}
+          <a href="www.google.com">Create your own!</a>
+        </StyledTypography>
+        )}
       </List>
     </StyledBox>
   );
 };
 
-export default UserOrgsContainer;
+export default OrgsContainer;

@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 
-import getUserOrgs from '../api/userOrgs';
-import useAlert from '../hooks/useAlert';
+import getOrgs from '../api/orgs';
+import { useAppDispatch } from '../app/hooks';
+import { setAlert } from '../features/alert/alertSlice';
 import { USER_ORG_FETCH_FAILED } from '../utils/alertMessages';
 
 interface Org {
@@ -12,36 +13,37 @@ interface Org {
     altName: string,
     ownerId: number,
     logo: string,
+    slug: string,
     membersCount: number,
 }
 
-interface UserOrgsContextType {
+interface OrgsContextType {
     orgs: Array<Org> | null
 }
 
-const UserOrgsContext = React.createContext<UserOrgsContextType>(null!);
+const OrgsContext = React.createContext<OrgsContextType>(null!);
 
-const UserOrgsProvider = ({ children }: {children: React.ReactNode}) => {
-  const alert = useAlert();
+const OrgsProvider = ({ children }: {children: React.ReactNode}) => {
+  const dispatch = useAppDispatch();
   const [orgs, setOrgs] = useState<Array<Org> | null>(null);
 
   useEffect(() => {
-    getUserOrgs()
+    getOrgs()
       .then((res) => {
         if (res.ok) {
           return res.json();
         }
-        alert.setAlert('error', USER_ORG_FETCH_FAILED);
+        dispatch(setAlert('error', USER_ORG_FETCH_FAILED));
       })
       .then((data) => setOrgs(data))
-      .catch(() => alert.setAlert('error', USER_ORG_FETCH_FAILED));
+      .catch(() => dispatch(setAlert('error', USER_ORG_FETCH_FAILED)));
   }, []);
 
   const value = useMemo(() => ({
     orgs,
   }), [orgs]);
 
-  return <UserOrgsContext.Provider value={value}>{children}</UserOrgsContext.Provider>;
+  return <OrgsContext.Provider value={value}>{children}</OrgsContext.Provider>;
 };
 
-export { UserOrgsContext, UserOrgsProvider };
+export { OrgsContext, OrgsProvider };

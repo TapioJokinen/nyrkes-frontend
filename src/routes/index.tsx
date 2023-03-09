@@ -10,8 +10,9 @@ import RequireAuth from '../components/wrappers/RequireAuth';
 import NotFound from './404';
 import Home from './home';
 import Login from './login';
+import Org from './org';
+import Orgs from './orgs';
 import Root from './root';
-import UserOrgs from './userOrgs';
 
 const RouterProvider = () => (
   <BrowserRouter>
@@ -22,7 +23,8 @@ const RouterProvider = () => (
         <Route path="home" element={<RequireAuth><Home /></RequireAuth>} />
         <Route path="calendar" element={<RequireAuth><p>Calendar comes here!</p></RequireAuth>} />
         <Route path="chat" element={<RequireAuth><p>Chat comes here!</p></RequireAuth>} />
-        <Route path="myorgs" element={<RequireAuth><UserOrgs /></RequireAuth>} />
+        <Route path="orgs" element={<RequireAuth><Orgs /></RequireAuth>} />
+        <Route path="orgs/:orgSlug" element={<RequireAuth><Org /></RequireAuth>} />
       </Route>
     </Routes>
   </BrowserRouter>

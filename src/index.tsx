@@ -3,9 +3,11 @@ import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import { Provider } from 'react-redux';
 
-import { AuthProvider, AlertProvider } from './context';
+import './index.css';
+import { store } from './app/store';
+import { AuthProvider } from './context';
 import RouterProvider from './routes';
 import theme from './theme';
 
@@ -13,11 +15,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AlertProvider>
+      <Provider store={store}>
         <AuthProvider>
           <RouterProvider />
         </AuthProvider>
-      </AlertProvider>
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
 );

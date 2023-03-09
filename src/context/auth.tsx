@@ -1,7 +1,8 @@
 import React, { useMemo, useState, useCallback } from 'react';
 
 import { blacklistToken, getTokens } from '../api/auth';
-import useAlert from '../hooks/useAlert';
+import { useAppDispatch } from '../app/hooks';
+import { setAlert } from '../features/alert/alertSlice';
 import {
   LOGIN_FAILED, LOGIN_SUCCESS,
 } from '../utils/alertMessages';
@@ -16,17 +17,17 @@ interface AuthContextType {
 const AuthContext = React.createContext<AuthContextType>(null!);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const alert = useAlert();
+  const dispatch = useAppDispatch();
   const [logged, setLogged] = useState<boolean>(false);
 
   const signingFailed = useCallback(() => {
     setLogged(false);
-    alert.setAlert('error', LOGIN_FAILED);
+    dispatch(setAlert('error', LOGIN_FAILED));
   }, []);
 
   const signingSuccessfull = useCallback(() => {
     setLogged(true);
-    alert.setAlert('success', LOGIN_SUCCESS);
+    dispatch(setAlert('success', LOGIN_SUCCESS));
   }, []);
 
   const signin = useCallback(

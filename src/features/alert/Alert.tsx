@@ -6,18 +6,28 @@ import Snackbar from '@mui/material/Snackbar';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import useAlert from '../hooks/useAlert';
-import capitalize from '../utils/capitalize';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import capitalize from '../../utils/tools';
+import {
+  selectMessage, selectOpen, selectSeverity, clearAlert,
+} from './alertSlice';
 
 const Alert = () => {
-  const alert = useAlert();
+  const dispatch = useAppDispatch();
+  const open = useAppSelector(selectOpen);
+  const severity = useAppSelector(selectSeverity);
+  const message = useAppSelector(selectMessage);
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('md'));
 
+  const handleClose = () => {
+    dispatch(clearAlert());
+  };
+
   return (
     <Snackbar
-      open={alert.open}
-      onClose={alert.clearAlert}
+      open={open}
+      onClose={handleClose}
       autoHideDuration={4000}
       anchorOrigin={matches
         ? { vertical: 'top', horizontal: 'center' }
@@ -25,12 +35,12 @@ const Alert = () => {
     >
       <MUIAlert
         variant="filled"
-        severity={alert.severity}
-        onClose={alert.clearAlert}
+        severity={severity}
+        onClose={handleClose}
         sx={{ width: '100%' }}
       >
-        <AlertTitle>{capitalize(alert.severity)}</AlertTitle>
-        {alert.message}
+        <AlertTitle>{capitalize(severity)}</AlertTitle>
+        {message}
       </MUIAlert>
     </Snackbar>
   );
