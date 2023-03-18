@@ -51,8 +51,7 @@ const NavBarUserMenu = (props: PropTypes) => {
   const [logout] = useLogoutMutation();
 
   const handleLogout = async () => {
-    await logout();
-    navigate('/login', { replace: true });
+    await logout().finally(() => navigate('/login', { replace: true }));
   };
   return (
     <StyledMenu

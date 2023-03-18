@@ -1,6 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 import baseQueryWithReauth from './baseFetch';
+import { URL_BLACKLIST_TOKENS, URL_TOKENS, URL_VERIFY_TOKEN } from '../../utils/urls';
 
 const { REACT_APP_REQUEST_CREDENTIALS } = process.env;
 
@@ -15,7 +16,7 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     login: builder.mutation<void, LoginRequest>({
       query: (credentials) => ({
-        url: 'auth/token/',
+        url: URL_TOKENS,
         method: 'POST',
         body: credentials,
         credentials: REACT_APP_REQUEST_CREDENTIALS,
@@ -23,14 +24,14 @@ export const authApi = createApi({
     }),
     logout: builder.mutation<void, void>({
       query: () => ({
-        url: 'auth/token/blacklist/',
+        url: URL_BLACKLIST_TOKENS,
         method: 'POST',
         credentials: REACT_APP_REQUEST_CREDENTIALS,
       }),
     }),
     verify: builder.mutation<void, void>({
       query: () => ({
-        url: 'auth/token/verify/',
+        url: URL_VERIFY_TOKEN,
         method: 'POST',
         credentials: REACT_APP_REQUEST_CREDENTIALS,
       }),

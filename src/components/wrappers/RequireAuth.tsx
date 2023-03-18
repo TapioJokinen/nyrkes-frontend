@@ -13,7 +13,7 @@ const RequireAuth = ({ children }: { children: JSX.Element }) => {
   const dispatch = useAppDispatch();
   const loggedIn = useAppSelector(selectLoggedIn);
   const [verify] = useVerifyMutation();
-  const [logout, { isUninitialized }] = useLogoutMutation();
+  const [logout] = useLogoutMutation();
 
   useEffect(() => {
     const verifyUser = async () => {
@@ -21,19 +21,13 @@ const RequireAuth = ({ children }: { children: JSX.Element }) => {
         try {
           await verify().unwrap();
         } catch (error) {
-          await logout();
+          await logout().finally(() => navigate('/login', { replace: true }));
           dispatch(setAlert({ severity: 'warning', message: VERIFYING_USER_FAILED }));
         }
       }
     };
     verifyUser();
   }, []);
-
-  useEffect(() => {
-    if (!isUninitialized) {
-      navigate('/login', { replace: true });
-    }
-  }, [isUninitialized]);
 
   if (loggedIn) {
     return children;

@@ -8,8 +8,8 @@ import ListSubheader from '@mui/material/ListSubheader';
 import Skeleton from '@mui/material/Skeleton';
 import { styled, useTheme } from '@mui/material/styles';
 
-import useOrgs from '../../hooks/useOrgs';
 import OrgCard from './OrgCard';
+import { useGetUserOrgsQuery } from '../../app/services/orgs';
 
 const StyledBox = styled(Box)(({ theme }) => ({
   width: '500px',
@@ -51,8 +51,8 @@ const StyledTypography = styled(Typography)(() => ({
 }));
 
 const OrgsContainer = () => {
-  const orgs = useOrgs();
   const theme = useTheme();
+  const { data, isLoading, isSuccess } = useGetUserOrgsQuery();
   return (
     <StyledBox sx={{ boxShadow: 5 }}>
       <List subheader={(
@@ -70,13 +70,14 @@ const OrgsContainer = () => {
         </ListSubheader>
       )}
       >
-        {orgs.orgs ? orgs.orgs.map((org) => (
+        {isSuccess && data.map((org) => (
           <StyledListItem key={org.id}>
             <OrgCard org={org} />
           </StyledListItem>
 
-        )) : <StyledSkeleton />}
-        {orgs.orgs && orgs.orgs.length <= 0
+        ))}
+        {isLoading && <StyledSkeleton />}
+        {isSuccess && data.length <= 0
         && (
         <StyledTypography>
           You are not part of any organization :(

@@ -12,6 +12,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 
+import { Org } from '../../types';
 import { REACT_APP_BASE_URL } from '../../utils/urls';
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -71,18 +72,6 @@ const StyledBox = styled(Box)(() => ({
   marginRight: 5,
 }));
 
-interface Org {
-    id: number,
-    dateAdded: string
-    dateUpdated: string,
-    name: string,
-    altName: string,
-    ownerId: number,
-    logo: string,
-    slug: string,
-    membersCount: number,
-}
-
 interface PropTypes {
     org: Org
 }
@@ -103,12 +92,12 @@ const OrgCard = (props: PropTypes) => {
               {org.name}
             </StyledTypographyMain>
             <Grid container direction="column">
-              <Grid xs={6}>
+              <Grid xs={10}>
                 <StyledTypographySub gutterBottom>
                   {org.altName}
                 </StyledTypographySub>
               </Grid>
-              <StyledGridItem xs={6}>
+              <StyledGridItem xs={2}>
                 <StyledBox>
                   <GroupsIcon sx={{ color: theme.base.mainBlue }} />
                   <StyledTypographySub gutterBottom>
