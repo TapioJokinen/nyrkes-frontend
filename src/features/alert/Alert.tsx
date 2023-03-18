@@ -6,11 +6,11 @@ import Snackbar from '@mui/material/Snackbar';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import capitalize from '../../utils/tools';
 import {
   selectMessage, selectOpen, selectSeverity, clearAlert,
 } from './alertSlice';
+import { useAppSelector, useAppDispatch } from '../../app/hooks';
+import capitalize from '../../utils/tools';
 
 const Alert = () => {
   const dispatch = useAppDispatch();

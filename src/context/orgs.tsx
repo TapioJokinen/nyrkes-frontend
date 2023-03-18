@@ -33,10 +33,10 @@ const OrgsProvider = ({ children }: {children: React.ReactNode}) => {
         if (res.ok) {
           return res.json();
         }
-        dispatch(setAlert('error', USER_ORG_FETCH_FAILED));
+        dispatch(setAlert({ severity: 'error', message: USER_ORG_FETCH_FAILED }));
       })
       .then((data) => setOrgs(data))
-      .catch(() => dispatch(setAlert('error', USER_ORG_FETCH_FAILED)));
+      .catch(() => dispatch(setAlert({ severity: 'error', message: USER_ORG_FETCH_FAILED })));
   }, []);
 
   const value = useMemo(() => ({

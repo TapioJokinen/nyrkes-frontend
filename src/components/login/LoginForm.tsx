@@ -9,7 +9,11 @@ import LoginButton from './LoginButton';
 import LoginForgotPwButton from './LoginForgotPwButton';
 import LoginRegisterButton from './LoginRegisterButton';
 import LoginTextField from './LoginTextField';
-import useAuth from '../../hooks/useAuth';
+import { useAppDispatch } from '../../app/hooks';
+import { useLoginMutation } from '../../app/services/auth';
+import { setAlert } from '../../features/alert/alertSlice';
+import { loginUser } from '../../features/auth/authSlice';
+import { LOGIN_FAILED, LOGIN_SUCCESS } from '../../utils/alertMessages';
 
 const StyledBox = styled(Box)(({ theme }) => ({
   marginTop: '10px',
@@ -26,19 +30,24 @@ const LoginForm = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const auth = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useAppDispatch();
+
+  const [login] = useLoginMutation();
 
   const from = location.state?.from?.pathname || '/home';
 
   const handleClick = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    auth.signin(email, password, () => {
-      setEmail('');
-      setPassword('');
+    try {
+      await login({ email, password }).unwrap();
+      dispatch(loginUser());
       navigate(from, { replace: true });
-    });
+      dispatch(setAlert({ severity: 'success', message: LOGIN_SUCCESS }));
+    } catch (error) {
+      dispatch(setAlert({ severity: 'error', message: LOGIN_FAILED }));
+    }
   };
 
   return (

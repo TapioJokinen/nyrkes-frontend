@@ -6,7 +6,8 @@ import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
-import useAuth from '../../hooks/useAuth';
+import { useAppDispatch } from '../../app/hooks';
+import { logoutUser } from '../../features/auth/authSlice';
 import { NAV_BAR_SETTINGS } from '../../utils/constants';
 
 interface PropTypes {
@@ -46,14 +47,13 @@ const StyledMenuItemLogout = styled(MenuItem)(({ theme }) => ({
 
 const NavBarUserMenu = (props: PropTypes) => {
   const { anchorElUser, handleCloseUserMenu } = props;
-  const auth = useAuth();
   const theme = useTheme();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleLogout = () => {
-    auth.logout(() => {
-      navigate('/login', { replace: true });
-    });
+    dispatch(logoutUser());
+    navigate('/login', { replace: true });
   };
   return (
     <StyledMenu

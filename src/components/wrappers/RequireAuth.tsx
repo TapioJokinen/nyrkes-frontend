@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { verifyToken } from '../../api/auth';
-import useAuth from '../../hooks/useAuth';
-import useFetch from '../../hooks/useFetch';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useLogoutMutation, useVerifyMutation } from '../../app/services/auth';
+import { setAlert } from '../../features/alert/alertSlice';
+import { loginUser, logoutUser, selectLoggedIn } from '../../features/auth/authSlice';
+import { VERIFYING_USER_FAILED } from '../../utils/alertMessages';
 
 const RequireAuth = ({ children }: { children: JSX.Element }) => {
-  const auth = useAuth();
   const navigate = useNavigate();
-  const response = useFetch(verifyToken, []);
+  const dispatch = useAppDispatch();
+  const loggedIn = useAppSelector(selectLoggedIn);
+  const [verify] = useVerifyMutation();
+  const [logout, { isUninitialized }] = useLogoutMutation();
 
-  if (response.error) {
-    auth.logout(() => {
+  useEffect(() => {
+    const verifyUser = async () => {
+      if (!loggedIn) {
+        try {
+          await verify().unwrap();
+          dispatch(loginUser());
+        } catch (error) {
+          await logout().unwrap();
+          dispatch(setAlert({ severity: 'warning', message: VERIFYING_USER_FAILED }));
+        }
+      }
+    };
+    verifyUser();
+  }, []);
+
+  useEffect(() => {
+    if (!isUninitialized) {
+      dispatch(logoutUser());
       navigate('/login', { replace: true });
-    });
-  }
+    }
+  }, [isUninitialized]);
 
-  if (response.ok) {
+  if (loggedIn) {
     return children;
   }
 
