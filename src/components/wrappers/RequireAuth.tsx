@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { useLogoutMutation, useVerifyMutation } from '../../app/services/auth';
 import { setAlert } from '../../features/alert/alertSlice';
-import { loginUser, logoutUser, selectLoggedIn } from '../../features/auth/authSlice';
+import { selectLoggedIn } from '../../features/auth/authSlice';
 import { VERIFYING_USER_FAILED } from '../../utils/alertMessages';
 
 const RequireAuth = ({ children }: { children: JSX.Element }) => {
@@ -20,9 +20,8 @@ const RequireAuth = ({ children }: { children: JSX.Element }) => {
       if (!loggedIn) {
         try {
           await verify().unwrap();
-          dispatch(loginUser());
         } catch (error) {
-          await logout().unwrap();
+          await logout();
           dispatch(setAlert({ severity: 'warning', message: VERIFYING_USER_FAILED }));
         }
       }
@@ -32,7 +31,6 @@ const RequireAuth = ({ children }: { children: JSX.Element }) => {
 
   useEffect(() => {
     if (!isUninitialized) {
-      dispatch(logoutUser());
       navigate('/login', { replace: true });
     }
   }, [isUninitialized]);

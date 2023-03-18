@@ -12,7 +12,6 @@ import LoginTextField from './LoginTextField';
 import { useAppDispatch } from '../../app/hooks';
 import { useLoginMutation } from '../../app/services/auth';
 import { setAlert } from '../../features/alert/alertSlice';
-import { loginUser } from '../../features/auth/authSlice';
 import { LOGIN_FAILED, LOGIN_SUCCESS } from '../../utils/alertMessages';
 
 const StyledBox = styled(Box)(({ theme }) => ({
@@ -42,7 +41,6 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       await login({ email, password }).unwrap();
-      dispatch(loginUser());
       navigate(from, { replace: true });
       dispatch(setAlert({ severity: 'success', message: LOGIN_SUCCESS }));
     } catch (error) {

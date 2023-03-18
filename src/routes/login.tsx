@@ -2,18 +2,20 @@ import React, { useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch } from '../app/hooks';
+import { useLogoutMutation } from '../app/services/auth';
 import LoginDialog from '../components/login';
 import Alert from '../features/alert/Alert';
-import { logoutUser } from '../features/auth/authSlice';
 
 const Login = () => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const [logout] = useLogoutMutation();
 
   useEffect(() => {
-    dispatch(logoutUser());
-    navigate('/login', { replace: true });
+    const logoutUser = async () => {
+      await logout();
+      navigate('/login', { replace: true });
+    };
+    logoutUser();
   }, []);
 
   return (

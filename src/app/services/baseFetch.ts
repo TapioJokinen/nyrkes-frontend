@@ -6,8 +6,6 @@ import type {
 } from '@reduxjs/toolkit/query';
 import { Mutex } from 'async-mutex';
 
-import { logoutUser } from '../../features/auth/authSlice';
-
 const { REACT_APP_BASE_URL, REACT_APP_API_VERSION_V1 } = process.env;
 
 // create a new mutex
@@ -39,7 +37,11 @@ const baseQueryWithReauth: BaseQueryFn<
           // retry the initial query
           result = await baseQuery(args, api, extraOptions);
         } else {
-          api.dispatch(logoutUser());
+          await baseQuery(
+            'auth/token/blacklist/',
+            api,
+            extraOptions,
+          );
         }
       } finally {
         // release must be called once the mutex should be released again.

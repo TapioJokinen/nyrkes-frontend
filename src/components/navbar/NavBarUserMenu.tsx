@@ -6,8 +6,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch } from '../../app/hooks';
-import { logoutUser } from '../../features/auth/authSlice';
+import { useLogoutMutation } from '../../app/services/auth';
 import { NAV_BAR_SETTINGS } from '../../utils/constants';
 
 interface PropTypes {
@@ -49,10 +48,10 @@ const NavBarUserMenu = (props: PropTypes) => {
   const { anchorElUser, handleCloseUserMenu } = props;
   const theme = useTheme();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
+  const [logout] = useLogoutMutation();
 
-  const handleLogout = () => {
-    dispatch(logoutUser());
+  const handleLogout = async () => {
+    await logout();
     navigate('/login', { replace: true });
   };
   return (
