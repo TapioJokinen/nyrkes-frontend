@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useLogoutMutation } from '../app/services/auth';
 import Alert from '../features/alert/Alert';
-import LoginDialog from '../features/auth/login';
+import LoginDialog from '../features/auth/login/LoginDialog';
 
 const Login = () => {
   const navigate = useNavigate();
