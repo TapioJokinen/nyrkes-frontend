@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useLogoutMutation } from '../app/services/auth';
-import LoginDialog from '../components/login';
 import Alert from '../features/alert/Alert';
+import LoginDialog from '../features/auth/login';
 
 const Login = () => {
   const navigate = useNavigate();

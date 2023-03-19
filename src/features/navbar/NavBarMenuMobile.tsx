@@ -9,7 +9,7 @@ import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
-import { NAV_BAR_PAGES } from '../../utils/constants';
+import { NAV_BAR_PAGES } from '../../common/utils/constants';
 
 interface PropTypes {
     handleOpenNavMenu: (e: React.MouseEvent<HTMLElement>) => void;

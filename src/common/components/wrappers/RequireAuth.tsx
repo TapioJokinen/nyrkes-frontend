@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { useLogoutMutation, useVerifyMutation } from '../../app/services/auth';
-import { setAlert } from '../../features/alert/alertSlice';
-import { selectLoggedIn } from '../../features/auth/authSlice';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useLogoutMutation, useVerifyMutation } from '../../../app/services/auth';
+import { setAlert } from '../../../features/alert/alertSlice';
+import { selectLoggedIn } from '../../../features/auth/authSlice';
 import { VERIFYING_USER_FAILED } from '../../utils/alertMessages';
 
 const RequireAuth = ({ children }: { children: JSX.Element }) => {

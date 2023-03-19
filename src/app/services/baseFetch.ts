@@ -6,7 +6,7 @@ import type {
 } from '@reduxjs/toolkit/query';
 import { Mutex } from 'async-mutex';
 
-import { URL_BLACKLIST_TOKENS, URL_REFRESH_TOKEN } from '../../utils/urls';
+import { URL_BLACKLIST_TOKENS, URL_REFRESH_TOKEN } from '../../common/utils/urls';
 
 const { REACT_APP_BASE_URL, REACT_APP_API_VERSION_V1 } = process.env;
 

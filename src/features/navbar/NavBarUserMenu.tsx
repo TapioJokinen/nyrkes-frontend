@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
 import { useLogoutMutation } from '../../app/services/auth';
-import { NAV_BAR_SETTINGS } from '../../utils/constants';
+import { NAV_BAR_SETTINGS } from '../../common/utils/constants';
 
 interface PropTypes {
     handleCloseUserMenu: () => void;

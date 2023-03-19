@@ -1,7 +1,7 @@
 import React from 'react';
 
-import OrgContainer from '../components/org/OrgContainer';
 import Alert from '../features/alert/Alert';
+import OrgContainer from '../features/org/OrgContainer';
 
 const Org = () => (
   <div>

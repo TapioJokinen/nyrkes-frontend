@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { useTheme } from '@mui/material/styles';
 import { Link, useLocation } from 'react-router-dom';
 
-import { NAV_BAR_PAGES } from '../../utils/constants';
+import { NAV_BAR_PAGES } from '../../common/utils/constants';
 
 // Styled components won't work with Button 'component' property.
 

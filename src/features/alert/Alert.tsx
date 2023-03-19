@@ -10,7 +10,7 @@ import {
   selectMessage, selectOpen, selectSeverity, clearAlert,
 } from './alertSlice';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import capitalize from '../../utils/tools';
+import capitalize from '../../common/utils/tools';
 
 const Alert = () => {
   const dispatch = useAppDispatch();

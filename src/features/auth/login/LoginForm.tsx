@@ -9,10 +9,10 @@ import LoginButton from './LoginButton';
 import LoginForgotPwButton from './LoginForgotPwButton';
 import LoginRegisterButton from './LoginRegisterButton';
 import LoginTextField from './LoginTextField';
-import { useAppDispatch } from '../../app/hooks';
-import { useLoginMutation } from '../../app/services/auth';
-import { setAlert } from '../../features/alert/alertSlice';
-import { LOGIN_FAILED, LOGIN_SUCCESS } from '../../utils/alertMessages';
+import { useAppDispatch } from '../../../app/hooks';
+import { useLoginMutation } from '../../../app/services/auth';
+import { LOGIN_FAILED, LOGIN_SUCCESS } from '../../../common/utils/alertMessages';
+import { setAlert } from '../../alert/alertSlice';
 
 const StyledBox = styled(Box)(({ theme }) => ({
   marginTop: '10px',

@@ -5,7 +5,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import LinkCard from './LinkCard';
+import LinkCard from '../../common/components/cards/LinkCard';
 
 // TODO: Make better descriptions.
 const linkCards = [

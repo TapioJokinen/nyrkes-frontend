@@ -2,17 +2,18 @@ import React from 'react';
 
 import Typography from '@mui/material/Typography';
 
-import { NAV_BAR_TITLE } from '../../utils/constants';
+import { NAV_BAR_TITLE } from '../../common/utils/constants';
 
-const NavBarTitle = () => (
+const NavBarTitleMobile = () => (
   <Typography
-    variant="h6"
+    variant="h5"
     noWrap
     component="a"
-    href="/home"
+    href=""
     sx={{
       mr: 2,
-      display: { xs: 'none', md: 'flex' },
+      display: { xs: 'flex', md: 'none' },
+      flexGrow: 1,
       fontFamily: 'monospace',
       fontWeight: 700,
       letterSpacing: '.3rem',
@@ -24,4 +25,4 @@ const NavBarTitle = () => (
   </Typography>
 );
 
-export default NavBarTitle;
+export default NavBarTitleMobile;

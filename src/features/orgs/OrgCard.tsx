@@ -12,8 +12,8 @@ import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import { Org } from '../../types';
-import { REACT_APP_BASE_URL } from '../../utils/urls';
+import { Org } from '../../common/types';
+import { REACT_APP_BASE_URL } from '../../common/utils/urls';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   backgroundColor: theme.list.item,

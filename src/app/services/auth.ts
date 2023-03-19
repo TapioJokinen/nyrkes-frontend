@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 
 import baseQueryWithReauth from './baseFetch';
-import { URL_BLACKLIST_TOKENS, URL_TOKENS, URL_VERIFY_TOKEN } from '../../utils/urls';
+import { URL_BLACKLIST_TOKENS, URL_TOKENS, URL_VERIFY_TOKEN } from '../../common/utils/urls';
 
 const { REACT_APP_REQUEST_CREDENTIALS } = process.env;
 

@@ -6,13 +6,13 @@ import {
   Routes,
 } from 'react-router-dom';
 
-import RequireAuth from '../components/wrappers/RequireAuth';
 import NotFound from './404';
 import Home from './home';
 import Login from './login';
 import Org from './org';
 import Orgs from './orgs';
 import Root from './root';
+import RequireAuth from '../common/components/wrappers/RequireAuth';
 
 const RouterProvider = () => (
   <BrowserRouter>
